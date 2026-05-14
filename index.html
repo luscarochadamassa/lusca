@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pergunta Importante</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.2s;
+        }
+
+        #nao {
+            position: absolute;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #sim {
+            background-color: #ff4d4d;
+            color: white;
+        }
+
+        #sim:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Você quer trabalhar nesse sábado?</h1>
+
+        <button id="nao">Não</button>
+
+        <button id="sim" onclick="tocarSom()">
+            Sim
+        </button>
+    </div>
+
+    <!-- SOM -->
+    <audio id="meuSom">
+        <source src="som.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+
+        // BOTÃO QUE FOGE
+        const botaoNão = document.getElementById("nao");
+
+        botaoNão.addEventListener("mouseover", () => {
+
+            const larguraTela = window.innerWidth;
+            const alturaTela = window.innerHeight;
+
+            const novaPosicaoX = Math.random() * (larguraTela - 120);
+            const novaPosicaoY = Math.random() * (alturaTela - 60);
+
+            botaoNão.style.left = novaPosicaoX + "px";
+            botaoNão.style.top = novaPosicaoY + "px";
+        });
+
+        // TOCAR SOM
+        function tocarSom() {
+
+            const som = document.getElementById("meuSom");
+
+            som.play();
+
+            alert("Eu sabia, vou trazer o xicote! 😎");
+        }
+
+    </script>
+
+</body>
+</html>
